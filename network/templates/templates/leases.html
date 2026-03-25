@@ -1,0 +1,25 @@
+<h1>Leases Page ✅</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  
+  <input type="text" name="mac" placeholder="MAC Address" required><br><br>
+  <input type="text" name="ip" placeholder="IP Address" required><br><br>
+  <input type="text" name="dhcp" placeholder="DHCP Version" required><br><br>
+  
+  <button type="submit">Add Lease</button>
+</form>
+
+<hr>
+
+<ul>
+  {% for lease in leases %}
+    <li>
+      MAC: {{ lease.mac_address }} |
+      IP: {{ lease.assigned_ip }} |
+      DHCP: {{ lease.dhcp_version }}
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="/">Back</a>
